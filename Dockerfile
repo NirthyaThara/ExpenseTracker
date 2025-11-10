@@ -1,20 +1,14 @@
-# Use official Tomcat image (Java 17)
+# Use official Tomcat image with Java 17
 FROM tomcat:10.1-jdk17
 
-# Maintainer info
-LABEL maintainer="yourname@example.com"
-
-# Remove default Tomcat webapps
+# Remove default webapps from Tomcat
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy your entire WebContent folder into Tomcat ROOT
-COPY ./WebContent /usr/local/tomcat/webapps/ROOT
+# Copy your web folder (contains JSPs, HTML, WEB-INF, etc.)
+COPY ./web /usr/local/tomcat/webapps/ROOT
 
-# ✅ WEB-INF is already inside WebContent, so no need for a second COPY
-# Just keep one COPY statement (above)
-
-# Expose Tomcat default port
+# Expose Tomcat port
 EXPOSE 8080
 
-# Start Tomcat when container runs
+# Start Tomcat
 CMD ["catalina.sh", "run"]
