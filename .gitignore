@@ -1,0 +1,27 @@
+# Java
+*.class
+*.log
+
+# IntelliJ / Eclipse
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# Build
+target/
+build/
+out/
+
+# Tomcat
+*.war
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Database credentials or sensitive files (optional)
+db.properties
+application.properties
