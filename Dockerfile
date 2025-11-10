@@ -7,15 +7,13 @@ LABEL maintainer="yourname@example.com"
 # Remove default Tomcat webapps
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy your web files into Tomcat's ROOT folder
-# Adjust "WebContent" if your folder is named differently
+# Copy your entire WebContent folder into Tomcat ROOT
 COPY ./WebContent /usr/local/tomcat/webapps/ROOT
 
-# Copy compiled classes and libraries (if present)
-# This ensures servlets and WEB-INF configurations are deployed
-COPY ./WEB-INF /usr/local/tomcat/webapps/ROOT/WEB-INF
+# ✅ WEB-INF is already inside WebContent, so no need for a second COPY
+# Just keep one COPY statement (above)
 
-# Expose default Tomcat port
+# Expose Tomcat default port
 EXPOSE 8080
 
 # Start Tomcat when container runs
